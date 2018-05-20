@@ -1,0 +1,17 @@
+<div class="tile-row"
+  *ngFor="let tileRow of tileGrid">
+  <div class="tile"
+    *ngFor="let tile of tileRow">
+
+    <div [class.player]="tile.isPlayer"
+      [class.food]="tile.isFood">
+    </div>
+    <!-- <svg height="40"
+      width="40">
+      <circle cx="20"
+        cy="20"
+        r="20"
+        fill="red" />
+    </svg> -->
+  </div>
+</div>

@@ -1,0 +1,44 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+
+.tile-row {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 0px;
+    .tile {
+        margin-right: 0px;
+    }
+    .tile:last-child {
+        margin-right: 0px;
+    }
+}
+
+.tile-row:last-child {
+    margin-bottom: 0px;
+}
+
+.tile {
+    display: flex;
+    width: var(--tile-width);
+    height: var(--tile-height);
+    align-items: center;
+    justify-content: center;
+    border-style: solid;
+    border-width: 1px;
+    background: black;
+    * {
+        width: var(--tile-width);
+        height: var(--tile-height);
+    }
+    .player {
+        background: green;
+    }
+    .food {
+        background: red;
+    }
+}

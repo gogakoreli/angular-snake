@@ -1,0 +1,14 @@
+body {
+  margin: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+:root {
+  --tile-width: 20px;
+  --tile-height: 20px;
+}

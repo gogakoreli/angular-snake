@@ -1,0 +1,11 @@
+<span>Choose Speed</span>
+<input class="speed-select"
+    type="range"
+    min="1"
+    max="100"
+    [(ngModel)]="gameSpeed"
+    (ngModelChange)="updateTickDelay()">
+
+<app-map>
+
+</app-map>
