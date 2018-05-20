@@ -54,6 +54,10 @@ export class MapComponent implements OnInit {
     return this.valueGrid[i][j] === 0;
   }
 
+  isPlayerSpot(i: number, j: number) {
+    return this.valueGrid[i][j] === 1;
+  }
+
   clearMap() {
     this.initTileGrid();
     this.initValueGrid();

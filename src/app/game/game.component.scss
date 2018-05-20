@@ -1,10 +1,16 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
 }
 
 .speed-select {
-  width: 50%;
+    width: 50%;
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    color: white;
 }

@@ -14,6 +14,13 @@
     <button (click)="stopGame()">Stop Game</button>
     <button (click)="restartGame()">Restart Game</button>
 </div>
+
+<span *ngIf="playerDead"
+    class="game-over">
+    <h1>
+        GAME OVER
+    </h1>
+</span>
 <app-map>
 
 </app-map>

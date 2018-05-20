@@ -17,7 +17,7 @@ export class GameComponent implements OnInit {
   tickDelay = 300;
   interval: NodeJS.Timer;
   gameStarted = false;
-  gameOver = false;
+  playerDead = false;
 
   @ViewChild(MapComponent) map: MapComponent;
 
@@ -32,6 +32,7 @@ export class GameComponent implements OnInit {
     this.subscribeToInput();
     setTimeout(() => {
       this.setupPlayer(this.map);
+      this.startGame();
     });
   }
 
@@ -62,6 +63,7 @@ export class GameComponent implements OnInit {
   }
 
   setupPlayer(map: MapComponent) {
+    this.playerDead = false;
     this.player = new Player(map);
     this.map.drawPlayer(this.player);
   }
@@ -98,7 +100,10 @@ export class GameComponent implements OnInit {
     this.generateFood();
     this.player.updateDirection();
     const newHead = this.player.getNewHead();
-    if (this.player.insideMapBorders(newHead)) {
+    if (this.isGameOver(newHead)) {
+      this.gameOver();
+      return;
+    }else (this.player.insideMapBorders(newHead)) {
       if (this.player.foodEaten(newHead, this.food)) {
         this.food.isEaten = true;
         this.player.eatFood(this.food);
@@ -108,6 +113,19 @@ export class GameComponent implements OnInit {
       }
     }
     this.map.renderView(this.player, this.food);
+  }
+
+  isGameOver(newHead: PlayerPart) {
+    let result = false;
+    result =
+      !this.player.insideMapBorders(newHead) ||
+      this.map.isPlayerSpot(newHead.i, newHead.j);
+    return result;
+  }
+
+  gameOver(){
+    this.playerDead = true;
+    this.stopGame();
   }
 
   generateFood() {
