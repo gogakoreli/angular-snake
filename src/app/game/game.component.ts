@@ -102,8 +102,8 @@ export class GameComponent implements OnInit {
     const newHead = this.player.getNewHead();
     if (this.isGameOver(newHead)) {
       this.gameOver();
-      return;
-    }else (this.player.insideMapBorders(newHead)) {
+      return null;
+    } else {
       if (this.player.foodEaten(newHead, this.food)) {
         this.food.isEaten = true;
         this.player.eatFood(this.food);
@@ -123,7 +123,7 @@ export class GameComponent implements OnInit {
     return result;
   }
 
-  gameOver(){
+  gameOver() {
     this.playerDead = true;
     this.stopGame();
   }
