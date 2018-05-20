@@ -8,7 +8,12 @@
     max="100"
     [(ngModel)]="gameSpeed"
     (ngModelChange)="updateTickDelay()">
-
+<br>
+<div>
+    <button (click)="startGame()">Start Game</button>
+    <button (click)="stopGame()">Stop Game</button>
+    <button (click)="restartGame()">Restart Game</button>
+</div>
 <app-map>
 
 </app-map>

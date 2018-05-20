@@ -16,12 +16,14 @@ export class GameComponent implements OnInit {
   gameSpeed = 50;
   tickDelay = 300;
   interval: NodeJS.Timer;
+  gameStarted = false;
+  gameOver = false;
 
   @ViewChild(MapComponent) map: MapComponent;
 
   updateTickDelay() {
     this.tickDelay = 300 - 250 * this.gameSpeed / 100;
-    this.restartGame();
+    this.refreshGame();
   }
 
   constructor(private input: InputService) {}
@@ -30,7 +32,6 @@ export class GameComponent implements OnInit {
     this.subscribeToInput();
     setTimeout(() => {
       this.setupPlayer(this.map);
-      this.setupGame();
     });
   }
 
@@ -65,15 +66,32 @@ export class GameComponent implements OnInit {
     this.map.drawPlayer(this.player);
   }
 
-  setupGame() {
-    this.interval = setInterval(() => {
-      this.perTick();
-    }, this.tickDelay);
+  startGame() {
+    if (!this.gameStarted) {
+      this.interval = setInterval(() => {
+        this.perTick();
+      }, this.tickDelay);
+      this.gameStarted = true;
+    }
+  }
+
+  stopGame() {
+    if (this.gameStarted) {
+      clearInterval(this.interval);
+      this.gameStarted = false;
+    }
   }
 
   restartGame() {
-    clearInterval(this.interval);
-    this.setupGame();
+    this.stopGame();
+    this.setupPlayer(this.map);
+    this.food = null;
+    this.startGame();
+  }
+
+  refreshGame() {
+    this.stopGame();
+    this.startGame();
   }
 
   perTick() {
