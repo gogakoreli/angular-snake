@@ -1,9 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  OnInit,
-  ViewChild
-  } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { distinctUntilChanged, retry } from 'rxjs/operators';
 import { MAP_HEIGHT, MAP_WIDTH, MapComponent } from '../map/map.component';
 import { InputKey, InputService } from '../services/input.service';
@@ -15,7 +10,7 @@ import { InputKey, InputService } from '../services/input.service';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss'],
 })
-export class GameComponent implements OnInit, AfterViewInit {
+export class GameComponent implements OnInit {
   player: Player;
   food: Food;
   gameSpeed = 50;
@@ -33,11 +28,10 @@ export class GameComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.subscribeToInput();
-  }
-
-  ngAfterViewInit() {
-    this.setupPlayer(this.map);
-    this.setupGame();
+    setTimeout(() => {
+      this.setupPlayer(this.map);
+      this.setupGame();
+    });
   }
 
   subscribeToInput() {
