@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { InputKey, InputService } from './services/input.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +6,5 @@ import { InputKey, InputService } from './services/input.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  constructor(public input: InputService) {}
-
-  displayInput(inputValue: number) {
-    return InputKey[inputValue];
-  }
+  constructor() {}
 }

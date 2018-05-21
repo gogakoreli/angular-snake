@@ -5,11 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GameComponent } from './game/game.component';
 import { MapComponent } from './map/map.component';
-import { PlayerComponent } from './player/player.component';
 import { InputService } from './services/input.service';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, GameComponent, PlayerComponent],
+  declarations: [AppComponent, GameComponent, MapComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
     InputService,

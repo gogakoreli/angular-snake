@@ -1,13 +1,12 @@
-import { Food, Player } from '../game/game.component';
+import { MAP_HEIGHT, MAP_WIDTH } from '../game/constants';
+import { Food } from '../game/game.models';
+import { Player } from '../game/player';
 import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
   ChangeDetectorRef,
 } from '@angular/core';
-
-export const MAP_WIDTH = 20;
-export const MAP_HEIGHT = 20;
 
 @Component({
   selector: 'app-map',
@@ -82,8 +81,6 @@ export class MapComponent implements OnInit {
     this.cd.detectChanges();
   }
 }
-
-export interface MapComponent {}
 
 export interface Tile {
   isFood: boolean;
